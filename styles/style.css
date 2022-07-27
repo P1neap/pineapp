@@ -1,0 +1,194 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+}
+
+body{
+    background-color: #1f212a;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.menu{
+    display: flex;
+    gap: 50px;
+    margin: 50px;
+}
+
+.menu-item{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    transition:0.5s;
+}
+
+.menu-item:hover{
+    width: 160px;
+    transition:0.5s;
+    
+}
+
+.menu-item::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50px; 
+    padding: 5px; 
+    background:linear-gradient(159deg, rgba(108,99,255,1) 0%, rgba(248,164,216,1) 100%); 
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+        mask-composite: exclude;
+    
+}
+
+.menu-item:active::before{
+    background:linear-gradient(159deg, rgba(252,203,144,1) 0%, rgba(213,126,234,1) 100%) ;
+}
+
+.menu-item::after{
+    position: relative;
+}
+
+.menu-item-link{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 15px;
+    left: 15px;
+}
+
+.home{
+    background: url(../img/home.svg) no-repeat;
+}
+
+.news{
+    background: url(../img/news.svg) no-repeat;
+}
+
+.user{
+    background: url(../img/user.svg) no-repeat;
+    width: 60px;
+    height: 60px;
+    top: 10px;
+    left: 10px;
+}
+
+.menu-item-link::before{
+    content: "";
+    width: 200px;
+    color: white;
+    position: absolute;
+    right: -170px;
+    transition:0.5s;
+    opacity: 0;
+}
+
+.menu-item:hover > .home::before{
+    content: "HOME";
+    transition:0.5s;
+    top: 15px;
+    right: -225px;
+    opacity: 1;
+}
+    
+.menu-item:hover > .news::before{
+    content: "NEWS";
+    transition:0.5s;
+    top: 15px;
+    right: -225px;
+    opacity: 1;
+}
+
+.menu-item:hover > .user::before{
+    content: "USER";
+    transition:0.5s;
+    top: 20px;
+    right: -225px;
+    opacity: 1;
+}
+
+:root {
+    --purple: #7f00ff;
+    --pink: #e100ff;
+  }
+
+button {
+    margin: 50px;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    position: relative;
+    outline: none;
+    border: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 0.75em 1.75em;
+    border-radius: 50px;
+    display: inline-block;
+    color: #fff;
+    
+    /* Our gradient */
+    background: -webkit-gradient(linear, left top, right top, from(var(--purple)), to(var(--pink)));
+    background: linear-gradient(to right, var(--purple), var(--pink));
+  }
+
+  button::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -10px;
+    left: 5%;
+    height: 110%;
+    width: 90%;
+    opacity: 0.8;
+    border-radius: 50px;
+    
+    /* Declaring our shadow color inherit from the parent (button) */
+    background: inherit;
+    
+    /* Blurring the element for shadow effect */
+    -webkit-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
+    -ms-filter: blur(6px);
+    filter: blur(6px);
+    
+    /* Transition for the magic */
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+
+  button:hover::after {
+    /* Changing blur effect */
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+  
+    /* And change the style properties */
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+  }
+
+  button:hover:active::after {
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+  }
