@@ -196,9 +196,67 @@ button {
     -ms-filter: blur(10px);
     filter: blur(10px);
   }
-  .button-item{
-    padding: 20px 10px;
-            }
+
+.buttons{
+    display: flex;
+    gap: 50px;
+    margin-left: 50px;
+}
+
+.button-item{
+    padding: 20px 30px;
+    position: relative;
+    color: #7f00ff;
+    text-transform: uppercase;
+    text-align: center;
+    width: 60px;
+    height: 20px;
+    
+}
+
+.button-item:hover{
+    background-color: #7f00ff;
+    color: #fff;
+    transition: 0.5s;
+    transition-delay: 0.5s;
+    box-shadow: 0px 0px 53px 0px rgba(127, 0, 255, 0.5);
+}
+
+.button-item::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 2px solid #7f00ff;
+    border-left: 2px solid #7f00ff;
+
+}
+
+.button-item:hover::after{
+    transition: 0.6s;
+    width: 98%;
+    height: 97%;
+}
+
+.button-item::after{
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid #7f00ff;
+    border-right: 2px solid #7f00ff;
+
+}
+
+.button-item:hover::before{
+    transition: 0.5s;
+    width: 98%;
+    height: 97%;
+}
         </style>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -222,17 +280,11 @@ button {
             </li>
         </ul>
         <button>TEXT</button>
-        <ul class="buttons">
-            <li class="button-item">
-                <a class="button-item-link home" href="#">first</a>
-            </li>
-            <li class="button-item">
-                <a class="button-item-link news" href="#"> second </a>
-            </li>
-            <li class="button-item">
-                <a class="button-item-link user" href="#">third</a>
-            </li>
-        </ul>
+        <div class="buttons">
+            <a href="#" class="button-item">first</a>
+            <a href="#" class="button-item">second</a>
+            <a href="#" class="button-item">third</a>
+        </div>
 
     </body>
 </html>
