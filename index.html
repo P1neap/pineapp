@@ -120,83 +120,6 @@ a{
     opacity: 1;
 }
 
-:root {
-    --purple: #7f00ff;
-    --pink: #e100ff;
-  }
-
-button {
-    margin: 50px;
-    font-family: "Roboto", sans-serif;
-    font-size: 16px;
-    position: relative;
-    outline: none;
-    border: none;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding: 0.75em 1.75em;
-    border-radius: 50px;
-    display: inline-block;
-    color: #fff;
-    
-    /* Our gradient */
-    background: -webkit-gradient(linear, left top, right top, from(var(--purple)), to(var(--pink)));
-    background: linear-gradient(to right, var(--purple), var(--pink));
-  }
-
-  button::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: -10px;
-    left: 5%;
-    height: 110%;
-    width: 90%;
-    opacity: 0.8;
-    border-radius: 50px;
-    
-    /* Declaring our shadow color inherit from the parent (button) */
-    background: inherit;
-    
-    /* Blurring the element for shadow effect */
-    -webkit-filter: blur(6px);
-    -moz-filter: blur(6px);
-    -o-filter: blur(6px);
-    -ms-filter: blur(6px);
-    filter: blur(6px);
-    
-    /* Transition for the magic */
-    -webkit-transition: all 0.2s;
-    transition: all 0.2s;
-  }
-
-  button:hover::after {
-    /* Changing blur effect */
-    -webkit-filter: blur(4px);
-    -moz-filter: blur(4px);
-    -o-filter: blur(4px);
-    -ms-filter: blur(4px);
-    filter: blur(4px);
-  
-    /* And change the style properties */
-    width: 100%;
-    bottom: -5px;
-    left: 0;
-  }
-
-  button:hover:active::after {
-    -webkit-filter: blur(10px);
-    -moz-filter: blur(10px);
-    -o-filter: blur(10px);
-    -ms-filter: blur(10px);
-    filter: blur(10px);
-  }
-
 .buttons{
     display: flex;
     gap: 50px;
@@ -274,7 +197,6 @@ button {
 }
 
 .button-item:hover{
-    
     color: #fff;
     transition: 0.5s;
     transition-delay: 0.5s;
@@ -298,7 +220,7 @@ button {
 .button-item:hover::after{
     transition: 0.6s;
     width: 98%;
-    height: 97%;
+    height: 96.5%;
 }
 
 .button-item::after{
@@ -318,8 +240,91 @@ button {
 .button-item:hover::before{
     transition: 0.5s;
     width: 98%;
-    height: 97%;
+    height: 96.5%;
     
+}
+.ministories{
+    display: flex;
+    gap: 50px;
+    margin: 50px;
+    height: 500px;
+}
+
+.ministories-item{
+    position: relative;
+    transition: 0.5s;
+    width: 150px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.31);
+}
+
+.ministories-item:hover{
+    width: 375px;
+    height: 500px;
+    transition: 0.5s;
+    box-shadow: 4px 4px 68px 0px rgba(0, 0, 0, 0.65);
+}
+
+.ministories-item:hover>img{
+    width: 375px;
+    height: 500px;
+    transition: 0.5s;
+}
+
+.ministories-item:hover>.ministories-content{
+    width: 375px;
+    height: 500px;
+    transition: 0.5s;
+}
+
+.ministories-item:hover>.ministories-content>span{
+    font-size: 60px;
+    transition: 0.5s;
+}
+
+.ministories-item>img{
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.ministories-content{
+    position: relative;
+    width: 150px;
+    height: 200px;
+    border-radius: 20px;
+    background: linear-gradient(209deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8) 100%);
+    transition: 0.5s;
+}
+.ministories-content>span{
+    font-size: 20px;
+    position: absolute;
+    color: #fff;
+    bottom: 30px;
+    left: 30px;
+    transition: 0.5s;
+}
+
+
+.ministories-content>p{
+    opacity: 0;
+    font-size: 20px;
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    left: 70px;
+    transition: 0.2s;
+}
+.ministories-item:hover>.ministories-content>p{
+    opacity: 1;
+    font-size: 20px;
+    bottom: 45px;
+    transition: 1s;
+    transition-delay: 0.5s;
+
 }
         </style>
         <meta charset="UTF-8">
@@ -343,12 +348,33 @@ button {
                 <a class="menu-item-link user" href="#"></a>
             </li>
         </ul>
-        <button>TEXT</button>
         <div class="buttons">
             <a href="#" class="button-item">first</a>
             <a href="#" class="button-item">second</a>
             <a href="#" class="button-item">third</a>
         </div>
-
+        <ul class="ministories">
+            <li class="ministories-item">
+                <img src="/img/1.jpg" alt="1">
+                <div class="ministories-content">
+                    <span>1</span>
+                    <p>First text field, without any meaning</p>
+                </div>
+            </li>
+            <li class="ministories-item">
+                <img src="/img/2.jpeg" alt="2">
+                <div class="ministories-content">
+                    <span>2</span>
+                    <p>Second text field, without any meaning</p>
+                </div>
+            </li>
+            <li class="ministories-item">
+                <img src="/img/3.jpg" alt="3">
+                <div class="ministories-content">
+                    <span>3</span>
+                    <p>Third text field, without any meaning</p>
+                </div>
+            </li>
+        </ul>
     </body>
 </html>
