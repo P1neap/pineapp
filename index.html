@@ -10,6 +10,7 @@
 
 body{
     background-color: #1f212a;
+    height: 2000px;
 }
 
 ul{
@@ -20,10 +21,65 @@ a{
     text-decoration: none;
 }
 
+@keyframes jump{
+    0%{
+        transform: translateX(0)
+    }
+    50%{
+        transform: translateX(50px)
+    }
+    100%{
+        transform: translateX(0)
+    }
+}
+
+h1{
+    width: 580px;
+    font-size: 60px;
+    text-transform: uppercase;
+    background: linear-gradient(212deg, rgba(204,251,255,1) 30%, rgba(80,213,135,1) 57%, rgba(239,150,197,1) 86%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 50px;
+    transition: 1s;
+}
+
+h1:hover{
+    width: 680px;
+    font-size: 80px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.5s;
+}
+
+h2{
+    width: 350px;
+    text-align: start;
+    font-size: 30px;
+    color: white;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+h2:hover{
+    animation: jump 1s forwards;
+}
+
+h3{
+    color: #FFF;
+    margin-bottom: 10px;
+}
+
+h4{
+    color: #fff;
+    margin-bottom: 5px;
+}
+
 .menu{
     display: flex;
     gap: 50px;
-    margin: 50px;
+    margin: 10px;
+    padding: 50px;
 }
 
 .menu-item{
@@ -52,10 +108,6 @@ a{
     -webkit-mask-composite: xor;
         mask-composite: exclude;
     
-}
-
-.menu-item:active::before{
-    background:linear-gradient(159deg, rgba(252,203,144,1) 0%, rgba(213,126,234,1) 100%) ;
 }
 
 .menu-item::after{
@@ -123,7 +175,8 @@ a{
 .buttons{
     display: flex;
     gap: 50px;
-    margin-left: 50px;
+    margin: 10px;
+    padding: 50px;
 }
 
 
@@ -246,7 +299,8 @@ a{
 .ministories{
     display: flex;
     gap: 50px;
-    margin: 50px;
+    margin: 10px;
+    padding: 50px;
     height: 500px;
 }
 
@@ -326,6 +380,53 @@ a{
     transition-delay: 0.5s;
 
 }
+
+.progressbars{
+    margin: 10px;
+    padding: 50px;
+}
+
+.progressbar{
+    width: 600px;
+    height: 50px;
+    border: #fff solid 1px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.progressbars:hover>.progressbar-item:nth-child(2)>.progressbar>.progressbar-inside{
+    width: 90%;
+    transition-delay: 3s;
+    transition: 2s;
+    background-color: #7fffd4;
+    box-shadow: 2px 2px 10px 2px rgba(127, 255, 212, 0.88);
+}
+
+.progressbars:hover>.progressbar-item:nth-child(3)>.progressbar>.progressbar-inside{
+    width: 70%;
+    transition-delay: 3s;
+    transition: 2s;
+    background-color: #7f00ff;
+    box-shadow: 2px 2px 10px 2px rgba(127, 0, 255, 0.88);
+}
+
+.progressbars:hover>.progressbar-item:nth-child(4)>.progressbar>.progressbar-inside{
+    width: 10%;
+    transition-delay: 3s;
+    transition: 2s;
+    background-color: #ec87c0;
+    box-shadow: 2px 2px 10px 2px rgba(236, 135, 192, 0.88);
+}
+
+.progressbar-inside{
+    background-color: #fff;
+    border-radius: 5px;
+    width: 0%;
+    height: 100%;
+    box-shadow: 2px 2px 10px 2px rgba(255, 255, 255, 0.88);
+    transition-delay: 99999999s;
+    transition: 99999999s;
+}
         </style>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -333,10 +434,11 @@ a{
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <link rel="stylesheet" href="/styles/style.css">
         <title>Document</title>
     </head>
     <body>
+        <h1>Experemental</h1>
+        <h2>Pretty buttons №1</h2>
         <ul class="menu">
             <li class="menu-item">
                 <a class="menu-item-link home" href="#"></a>
@@ -348,11 +450,13 @@ a{
                 <a class="menu-item-link user" href="#"></a>
             </li>
         </ul>
+        <h2>Pretty buttons №2</h2>
         <div class="buttons">
             <a href="#" class="button-item">first</a>
             <a href="#" class="button-item">second</a>
             <a href="#" class="button-item">third</a>
         </div>
+        <h2>ministories</h2>
         <ul class="ministories">
             <li class="ministories-item">
                 <img src="https://javasea.ru/uploads/posts/2018-06/1529932822_vesna-gory-ozero.jpg" alt="1">
@@ -373,6 +477,28 @@ a{
                 <div class="ministories-content">
                     <span>3</span>
                     <p>Third text field, without any meaning</p>
+                </div>
+            </li>
+        </ul>
+        <h2>progressbars <br>(hover it)</h2>
+        <ul class="progressbars">
+            <h3>Знание:</h3>
+            <li class="progressbar-item">
+                <h4>HTML</h4>
+                <div class="progressbar">
+                    <div class="progressbar-inside"></div>
+                </div>
+            </li>
+            <li class="progressbar-item">
+                <h4>CSS</h4>
+                <div class="progressbar">
+                    <div class="progressbar-inside"></div>
+                </div>
+            </li>
+            <li class="progressbar-item">
+                <h4>JS</h4>
+                <div class="progressbar">
+                    <div class="progressbar-inside"></div>
                 </div>
             </li>
         </ul>
