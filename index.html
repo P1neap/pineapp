@@ -2,6 +2,21 @@
 <html lang="en">
     <head>
         <style>
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+
 *{
     padding: 0;
     margin: 0;
@@ -9,8 +24,106 @@
 }
 
 body{
-    background-color: #1f212a;
+    background: linear-gradient(163deg, rgba(10,130,112,1) 0%, rgba(14,31,64,1) 100%);
     height: 2000px;
+    
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    background-color: #1c1f26;
+    display: flex;
+    box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.2);
+}
+.button-sidebar{
+    margin: auto 50px auto auto;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 4;
+}
+
+.stack{
+    position: fixed;
+    top: 25px; /* Stay at the top */
+    right: 0;
+}
+
+.stack>.button-sidebar-item:nth-child(1){
+    width: 40px;
+    height: 2px;
+    transition: 0.3s;
+}
+
+.stack>.button-sidebar-item:nth-child(2){
+    width: 40px;
+    height: 2px;
+    transition: 0.3s;
+}
+
+.stack>.button-sidebar-item:nth-child(3){
+    width: 40px;
+    height: 2px;
+    transition: 0.3s;
+}
+
+.button-sidebar-item{
+    width: 30px;
+    height: 4px;
+    background-color: #7fffd4;
+    position: relative;
+    transition: 0.5s;
+    box-shadow: 2px 2px 10px 2px rgba(127, 255, 212, 0.3);
+}
+
+.button-sidebar:hover>.button-sidebar-item:nth-child(1){
+    width: 40px;
+    height: 2px;
+    transition: 0.3s;
+}
+.button-sidebar:hover>.button-sidebar-item:nth-child(2){
+    width: 40px;
+    height: 2px;
+    transition: 0.3s;
+}
+
+.button-sidebar:hover>.button-sidebar-item:nth-child(3){
+    width: 40px;
+    height: 2px;
+    transition: 0.3s;
+}
+
+.stack:hover>.button-sidebar-item:nth-child(1){
+    width: 30px;
+    height: 4px;
+    transition: 0.3s;
+}
+.stack:hover>.button-sidebar-item:nth-child(2){
+    width: 30px;
+    height: 4px;
+    transition: 0.3s;
+}
+
+.stack:hover>.button-sidebar-item:nth-child(3){
+    width: 30px;
+    height: 4px;
+    transition: 0.3s;
+}
+
+.closed{
+    transition: right 0.5s;
+}
+
+main{
+    padding: 0 50px;
+    margin: 0 150px;
+    background-color: #1f212a;
+    box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.5);
 }
 
 ul{
@@ -40,7 +153,7 @@ h1{
     background: linear-gradient(212deg, rgba(204,251,255,1) 30%, rgba(80,213,135,1) 57%, rgba(239,150,197,1) 86%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin: 50px;
+    padding: 50px;
     transition: 1s;
 }
 
@@ -84,13 +197,13 @@ h4{
 
 .menu-item{
     position: relative;
-    width: 80px;
+    min-width: 80px;
     height: 80px;
     transition:0.5s;
 }
 
 .menu-item:hover{
-    width: 160px;
+    min-width: 160px;
     transition:0.5s;
     
 }
@@ -427,6 +540,42 @@ h4{
     transition-delay: 99999999s;
     transition: 99999999s;
 }
+
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 300px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+    box-shadow: -10px 4px 10px 0px rgba(0, 0, 0, 0.31);
+    border-left: 1px #7fffd4 solid;
+    transition: right 0.3s;
+    transform: translateX(300px);
+}
+
+.sidenav>a{
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+
+    padding: 10px;
+    border-top: #7fffd4 1px solid;
+    border-bottom: #7fffd4 1px solid;
+    transition: 0.3s;
+}
+.sidenav>a:hover{
+    color: #7f00ff;
+    font-size: 25px;
+    box-shadow: 2px 2px 10px 2px rgba(127, 0, 255, 0.5);
+    transition: 0.3s;
+}
         </style>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -437,8 +586,22 @@ h4{
         <title>EXPEREMENTAL</title>
     </head>
     <body>
+        <header>
+            <div class="button-sidebar">
+                <div class="button-sidebar-item"></div>
+                <div class="button-sidebar-item"></div>
+                <div class="button-sidebar-item"></div>
+            </div>
+        </header>
+        <div class="sidenav closed">
+            <a href="#pb1">PRETTY BUTTONS №1</a>
+            <a href="#pb2">PRETTY BUTTONS №2</a>
+            <a href="#mnstrs">ministories</a>
+            <a href="#prgrsbr">PROGRESSBARS</a>
+        </div>
+        <main>
         <h1>Experemental</h1>
-        <h2>Pretty buttons №1</h2>
+        <h2 id="pb1">Pretty buttons №1</h2>
         <ul class="menu">
             <li class="menu-item">
                 <a class="menu-item-link home" href="#"></a>
@@ -450,13 +613,13 @@ h4{
                 <a class="menu-item-link user" href="#"></a>
             </li>
         </ul>
-        <h2>Pretty buttons №2</h2>
+        <h2 id="pb2">Pretty buttons №2</h2>
         <div class="buttons">
             <a href="#" class="button-item">first</a>
             <a href="#" class="button-item">second</a>
             <a href="#" class="button-item">third</a>
         </div>
-        <h2>ministories</h2>
+        <h2 id="mnstrs">ministories</h2>
         <ul class="ministories">
             <li class="ministories-item">
                 <img src="https://javasea.ru/uploads/posts/2018-06/1529932822_vesna-gory-ozero.jpg" alt="1">
@@ -480,7 +643,7 @@ h4{
                 </div>
             </li>
         </ul>
-        <h2>progressbars <br>(hover it)</h2>
+        <h2 id="prgrsbr">progressbars <br>(hover it)</h2>
         <ul class="progressbars">
             <h3>Знание:</h3>
             <li class="progressbar-item">
@@ -502,5 +665,34 @@ h4{
                 </div>
             </li>
         </ul>
+        </main>
+        <footer>
+
+        </footer>
+        <script>
+            let sidebarButton = document.querySelector('.button-sidebar');
+            let sidebar = document.querySelector('.sidenav');
+
+            const sidebarButtonClickHandler = (evt) =>{
+                const element = evt.target.closest('.button-sidebar');
+                if(!element){
+                    return;
+                }
+                evt.preventDefault();
+                if(sidebar.classList.contains('closed')){
+                    sidebar.style.right = "300px"
+                    sidebar.classList.toggle('closed');
+                    sidebarButton.classList.toggle('stack');
+                }
+                else{
+                    sidebar.style.right = "0px"
+                    sidebar.classList.toggle('closed');
+                    sidebarButton.classList.toggle('stack');
+                }
+                
+                
+            }
+            sidebarButton.addEventListener('click', sidebarButtonClickHandler);
+        </script>
     </body>
 </html>
