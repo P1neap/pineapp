@@ -26,7 +26,6 @@
 body{
     background: linear-gradient(163deg, rgba(10,130,112,1) 0%, rgba(14,31,64,1) 100%);
     height: 2000px;
-    
 }
 
 header{
@@ -46,6 +45,7 @@ header{
     justify-content: center;
     align-items: flex-end;
     z-index: 4;
+    transition: top 1s;
 }
 
 .stack{
@@ -115,6 +115,12 @@ header{
     transition: 0.3s;
 }
 
+.fixed{
+    position: fixed;
+    right: 0;
+    transition: top 1s;
+}
+
 .closed{
     transition: right 0.5s;
 }
@@ -124,6 +130,7 @@ main{
     margin: 0 150px;
     background-color: #1f212a;
     box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.5);
+    transition: 1s;
 }
 
 ul{
@@ -495,7 +502,7 @@ h4{
 }
 
 .progressbars{
-    margin: 10px;
+    margin: 0;
     padding: 50px;
 }
 
@@ -576,6 +583,98 @@ h4{
     box-shadow: 2px 2px 10px 2px rgba(127, 0, 255, 0.5);
     transition: 0.3s;
 }
+
+main.active{
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.animated-button {
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px 20px;
+  padding: 15px 30px;
+  overflow: hidden;
+  border: 2px solid;
+  border-bottom-width: 4px;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: rgba(30, 255, 188, 1);
+  background: rgba(255, 255, 255, 1);
+  transition: color 0.3s, background 0.5s;
+}
+.animated-button:hover {
+  animation: stripes 0.75s infinite linear;
+  background: linear-gradient(
+    45deg,
+    rgba(30, 255, 188, 1) 25%,
+    rgba(255, 255, 255, 1) 25%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(30, 255, 188, 1) 50%,
+    rgba(30, 255, 188, 1) 75%,
+    rgba(255, 255, 255, 1) 75%,
+    rgba(255, 255, 255, 1)
+  );
+  background-size: 10px 10px;
+  color: #ff50e5;
+}
+@keyframes stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 0;
+  }
+}
+
+.popup{
+    position: fixed;
+    visibility: hidden;
+    border-radius: 20px;
+    background-color: #fff;
+    width: 800px;
+    height: 600px;
+    top: 10%;
+    left: 30%;
+}
+
+.popup.active{
+    visibility: visible;
+    top: 20%;
+    transition: 1s;
+}
+
+.popup button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.popup img{
+    position: absolute;
+    margin: 20px;
+    width: 400px;
+}
+
+.popup h4{
+    position: absolute;
+    color: #111;
+    top: 20px;
+    right: 90px;
+}
+
+.popup p{
+    position: absolute;
+    color: #111;
+    width: 40%;
+    right: 43px;
+    top: 50px;
+
+}
+
         </style>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -586,6 +685,7 @@ h4{
         <title>EXPEREMENTAL</title>
     </head>
     <body>
+        
         <header>
             <div class="button-sidebar">
                 <div class="button-sidebar-item"></div>
@@ -604,7 +704,7 @@ h4{
         <h2 id="pb1">Pretty buttons №1</h2>
         <ul class="menu">
             <li class="menu-item">
-                <a class="menu-item-link home" href="#"></a>
+                <a class="menu-item-link home" href="main.html"></a>
             </li>
             <li class="menu-item">
                 <a class="menu-item-link news" href="#">  </a>
@@ -664,35 +764,143 @@ h4{
                     <div class="progressbar-inside"></div>
                 </div>
             </li>
-        </ul>
-        </main>
-        <footer>
-
-        </footer>
+        </ul> 
+    </main>
+    <div class="popup">
+        <img src="img/1.jpg" alt="1231">
+        <h4>First text field, without any meaning</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, enim. Officia cumque similique, iste autem modi fuga nulla facere nemo neque quibusdam perferendis aliquam odio porro natus iusto saepe corporis!</p>
+        <button onclick="toggle()" class="animated-button">close</button>
+    </div>
         <script>
-            let sidebarButton = document.querySelector('.button-sidebar');
-            let sidebar = document.querySelector('.sidenav');
+let sidebarButton = document.querySelector('.button-sidebar');
+let sidebar = document.querySelector('.sidenav');
+const links = document.querySelectorAll('.sidenav > a');
+let blur = document.querySelector('main');
+let popup = document.querySelector('.popup');
+let ministories = document.querySelectorAll('.ministories');
 
-            const sidebarButtonClickHandler = (evt) =>{
-                const element = evt.target.closest('.button-sidebar');
-                if(!element){
-                    return;
-                }
-                evt.preventDefault();
-                if(sidebar.classList.contains('closed')){
-                    sidebar.style.right = "300px"
-                    sidebar.classList.toggle('closed');
-                    sidebarButton.classList.toggle('stack');
-                }
-                else{
-                    sidebar.style.right = "0px"
-                    sidebar.classList.toggle('closed');
-                    sidebarButton.classList.toggle('stack');
-                }
-                
-                
-            }
-            sidebarButton.addEventListener('click', sidebarButtonClickHandler);
+
+
+const stories = [
+    {
+        src: '1.jpg',
+        head: 'First text field, without any meaning'
+    },
+    {
+        src: '2.jpeg',
+        head: 'Second text field, without any meaning'
+    },
+    {
+        src: '3.jpg',
+        head: 'Third text field, without any meaning'
+    }
+]
+
+const storiesClickHandler = (evt) => {
+    const element = evt.target.closest('li');
+    if (!element) {
+       return;
+    }
+    evt.preventDefault();
+    if(element == document.querySelector('.ministories-item:nth-child(1)')){
+        createPopup(stories[0]);
+    }
+    else if(element == document.querySelector('.ministories-item:nth-child(2)')){
+        createPopup(stories[1]);
+    }
+    else{
+        createPopup(stories[2]);
+    }
+}
+
+const createPopup = (popupItem) =>{
+    document.querySelector('.popup>img').src = `img/` + popupItem.src;
+    document.querySelector('.popup>h4').textContent = popupItem.head;
+    toggle();
+}
+
+const toggle = () => {
+    blur.classList.toggle('active');
+    popup.classList.toggle('active');
+}
+
+const elementClickHandler = (evt) => {
+    const element = evt.target.closest('a');
+    if (!element) {
+       return;
+    }
+    // отменяем действие по умолчанию
+    evt.preventDefault();
+    // получаем идентификатор элемента для перехода
+    const blockId = element.getAttribute('href');
+    if (blockId && blockId !== '#') {
+        // находим элемент для перехода
+        const block = document.querySelector(blockId);
+        if (block) {
+        // плавно переходим к элементу
+        block.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        });
+        }
+    }   
+};
+for(let i = 0; i < links.length; i++){
+    links[i].addEventListener('click', elementClickHandler)
+}
+
+for(let i = 0; i < ministories.length; i++){
+    ministories[i].addEventListener('click', storiesClickHandler)
+}
+
+
+
+function getScrollPercentage() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    
+    let documentHeight = Math.max(
+        document.body.scrollHeight, document.body.offsetHeight, document.body.clientHeight,
+        document.documentElement.scrollHeight, document.documentElement.offsetHeight, document.documentElement.clientHeight
+    );
+
+    return ((scrollTop / (documentHeight - windowHeight)) * 100);
+
+}
+
+window.onscroll = function() {
+	if(getScrollPercentage() > 25){
+        sidebarButton.classList.add("fixed")
+        sidebarButton.style.top = "30px"
+    }
+    else if(getScrollPercentage() < 3){
+        sidebarButton.classList.remove("fixed");
+        
+    }
+};
+
+
+const sidebarButtonClickHandler = (evt) =>{
+    const element = evt.target.closest('.button-sidebar');
+    if(!element){
+        return;
+    }
+    evt.preventDefault();
+    if(sidebar.classList.contains('closed')){
+        sidebar.style.right = "300px"
+        sidebar.classList.toggle('closed');
+        sidebarButton.classList.toggle('stack');
+    }
+    else{
+        sidebar.style.right = "0px"
+        sidebar.classList.toggle('closed');
+        sidebarButton.classList.toggle('stack');
+    }
+    
+    
+}
+sidebarButton.addEventListener('click', sidebarButtonClickHandler);
         </script>
     </body>
 </html>
