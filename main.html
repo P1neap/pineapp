@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+body{
+    background: linear-gradient(163deg, rgba(201,115,255,1) 0%, rgba(174,186,248,1) 100%);
+    
+}
+
+header{
+    position: fixed;
+    height: 50px;
+}
+
+@keyframes anim{
+    0%{
+        transform: translateY(10px);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(10px);
+    }
+}
+
+.promo{
+    position: relative;
+    height: 1000px;
+    width: 100%;
+}
+
+.promo img{
+    position: absolute;
+    animation: anim 5s infinite;
+}
+
+.blur{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px 7px rgba(255, 255, 255, 0.5);
+}
+
+.promo p{
+    position: absolute;
+    width: 250px;
+    top: 400px;
+    right: 350px;
+
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.promo a{
+    position: absolute;
+    width: 250px;
+    top: 530px;
+    right: 380px;
+
+    color: #fff;
+    border: #fff 2px solid;
+    width: 190px;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px 20px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.promo a:hover{
+    color: #7613c0;
+    background-color: #fff;
+    transition: 0.5s;
+    transition-delay: 0.5s;
+}
+
+.promo a::before{
+    position: absolute;
+    content: "";
+    width: 186px;
+    height: 53px;
+    top: -53px;
+    left: 0;
+    background-color: #fff;
+    opacity: 0.9;
+    transition: 0.7s;
+    transition-delay: 0.5s;
+}
+
+.promo a:hover::before{
+    transform: translateY(106px);
+    transition: 0.5s;
+}
+
+h1{
+    width: 500px;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+
+    font-size: 150px;
+    color: #fff;
+    text-align: center;
+}
+
+.blur span{
+    width: 500px;
+    position: absolute;
+    top: 520px;
+    left: 210px;
+
+    font-size: 35px;
+    font-family: 'Square Peg', cursive;
+    color: #fff;
+}
+
+.container{
+    background-color: #fff;
+    padding: 50px 80px;
+    margin: 20px 150px;
+    box-shadow: 0px 10px 19px 0px rgba(255, 255, 255, 0.5);
+}
+
+h2{
+    width: 500px;
+    height: 150px;
+    color: #7613c0;
+    text-align: center;
+    font-size: 4em;
+    border-left: #7613c0 solid 4px;
+}
+
+.nav li{
+    position: relative;
+    padding: 50px 0;
+}
+
+h3{
+    color: #7613c0;
+    position: relative;
+    width: 230px;
+    height: 70px;
+    padding-top: 15px;
+    margin: 10px auto 50px auto;
+    text-transform: uppercase;
+    text-align: center;
+    border-left: #7613c0 2px solid;
+    border-right: #7613c0 2px solid;
+}
+
+h3::before{
+    position: absolute;
+    content: "";
+    width: 610px;
+    height: 2px;
+    left: -610px;
+    top: 34px;
+    background-color: #7613c0;
+}
+
+h3::after{
+    position: absolute;
+    content: "";
+    width: 610px;
+    height: 2px;
+    left: 226px;
+    top: 34px;
+    background-color: #7613c0;
+}
+
+.nav .button{
+    position: absolute;
+    right: 30%;
+    top: 180px;
+}
+
+.button{
+    color: #7613c0;
+    padding: 20px 50px;
+    border: #7613c0 2px solid;
+    text-transform: uppercase;
+    font-weight: bold;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.button::before{
+    content: "";
+    position: absolute;
+    background-color: #7613c0;
+    width: 200px;
+    height: 5px;
+    transform: rotate(45deg);
+    bottom: -30px;
+    left: -85px;
+    opacity: 0;
+}
+
+.button:hover{
+    transform: scale(105%);
+    transition: 0.2s;
+}
+
+.button:hover::before{
+    transform: rotate(45deg) translateY(-200px);
+    transition: 0.8s;
+    transition-delay: 0.3s;
+    opacity: 1;
+}
+
+.nav p{
+    color: #7613c0;
+    margin-bottom: 30px;
+    font-size: 20px;
+    width: 45%;
+}
+
+.to-dark{
+    position: sticky;
+    width: 100%;
+    height: 1080px;
+}
+
+.to-dark:hover svg:nth-child(1){
+    transform: rotate(360deg);
+    transition: 2s;
+    opacity: 0;
+}
+
+.to-dark:hover svg:nth-child(2){
+    transition: 1s;
+    transition-delay: 3s;
+    opacity: 1;
+}
+
+.to-dark svg{
+    width: 500px;
+    position: absolute;
+    left: 38%;
+    top: 20%;
+    
+}
+
+.to-dark svg:nth-child(1){
+    fill: yellow;
+    transition: 2s;
+    transition-delay: 1.5s;
+}
+
+.to-dark svg:nth-child(2){
+    z-index: 22;
+    opacity: 0;
+    fill: #fff;
+    transition: 1s;
+    transition-delay: 0.5s;
+
+}
+
+.to-dark:hover .dark{
+    transform: translateY(0px);
+    transition: 0.5s;
+    transition-delay: 2s;
+}
+
+.dark{
+    position: absolute;
+    transform: translateY(1000px);
+    width: 100%;
+    height: 4000px;
+    background-color: #191a1d;
+    transition: 0.5s;
+    transition-delay: 1s;
+    
+}
+
+.promo-dark h2{
+    position: absolute;
+    border: none;
+    color: #fff;
+    
+    margin-left: 100px;
+    height: 170px;
+    width: 650px;
+    text-transform: uppercase;
+    text-align: center;
+
+    top: 400px;
+}
+
+.dark p{
+    position: absolute;
+    color: #fe9cdb;
+    margin: 50px 0 0 100px;
+    font-size: 20px;
+    width: 45%;
+}
+.promo-dark{
+    margin-top: 1000px;
+    position: relative;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 700px;
+}
+.promo-dark img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.dark-blur{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(25deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+
+}
+
+        </style>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            
+        </header>
+        <main>
+            <section class="promo">
+                <img src="img/Noise.png" width="1900">
+                <div class="blur">
+                    <h1>WED DESIGN</h1>
+                    <span>by Pineapp</span>
+                </div>
+                <p>Explore it now!</p>
+                <a href="#slidedown">Slide down</a>
+            </section>
+            <section id="slidedown" class="container">
+                <h2>WELCOME TO HOME PAGE</h2>
+                <ul class="nav">
+                    <li>
+                        <h3>MY EXPEREMENTAL site</h3>
+                        <p>This is a website for experimenting and creating pretty elements with CSS</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius enim at reprehenderit exercitationem ipsam ab incidunt nam quas aut odit? Rerum ex cumque veniam quam fuga nesciunt quos porro. Suscipit?</p>
+                        <a class="button" href="index.html">TO site</a>
+                    </li>
+                    <li>
+                        <h3>About</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum maiores voluptatum et repellat explicabo debitis. Ex consectetur alias et vel laboriosam deserunt, in perspiciatis delectus assumenda ipsam eius mollitia voluptatem!</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut recusandae debitis assumenda, distinctio enim error reprehenderit cum harum consequatur, animi unde quos et temporibus quia fugiat quibusdam magni excepturi reiciendis!</p>
+                        <a href="#" class="button">about</a>
+                    </li>
+                    <li>
+                        <h3>🌙 Dark theme 🌙</h3>
+                        <p>Dive into the dark theme with me</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptas quae rerum corporis facere mollitia molestias! Quasi quaerat, dolorem quas quibusdam optio eos consequuntur alias nemo reiciendis deserunt. Blanditiis, expedita!</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit commodi tempora at id tenetur quas necessitatibus fugiat reprehenderit cumque impedit dolores, sint, doloremque hic, officiis ipsa quo. Sapiente, quasi consequatur.</p>
+                        <a href="#dark" class="button">to dark!</a>
+                    </li>
+                </ul>
+            </section>
+
+            <div id="dark" class="to-dark">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+<g>
+	<g id="_x37__5_">
+		<g>
+			<path d="M76.5,286.875H19.125C8.568,286.875,0,295.443,0,306c0,10.557,8.568,19.125,19.125,19.125H76.5c10.557,0,19.125-8.568,19.125-19.125C95.625,295.443,87.057,286.875,76.5,286.875z M306,95.625c10.557,0,19.125-8.568,19.125-19.125V19.125C325.125,8.568,316.557,0,306,0c-10.557,0-19.125,8.568-19.125,19.125V76.5C286.875,87.057,295.443,95.625,306,95.625z M490.002,148.792l40.182-40.182c7.401-7.401,7.401-19.393,0-26.794s-19.394-7.401-26.795,0l-40.182,40.182c-7.401,7.401-7.401,19.393,0,26.794C470.609,156.194,482.601,156.194,490.002,148.792z M141.716,443.509l-40.182,40.182c-7.401,7.401-7.401,19.393,0,26.794s19.393,7.401,26.794,0l40.182-40.182c7.401-7.401,7.401-19.393,0-26.794S149.118,436.107,141.716,443.509z M130.203,157.246c7.478,7.478,19.584,7.478,27.042,0c7.459-7.478,7.459-19.584,0-27.042L116.682,89.62c-7.478-7.478-19.584-7.478-27.043,0c-7.478,7.478-7.478,19.584,0,27.043L130.203,157.246z M306,516.375c-10.557,0-19.125,8.568-19.125,19.125v57.375c0,10.557,8.568,19.125,19.125,19.125c10.557,0,19.125-8.568,19.125-19.125V535.5C325.125,524.943,316.557,516.375,306,516.375z M481.797,454.754c-7.478-7.478-19.584-7.478-27.043,0c-7.478,7.479-7.478,19.584,0,27.043l40.564,40.564c7.478,7.478,19.584,7.478,27.043,0c7.459-7.479,7.478-19.584,0-27.043L481.797,454.754z M592.875,286.875H535.5c-10.557,0-19.125,8.568-19.125,19.125c0,10.557,8.568,19.125,19.125,19.125h57.375c10.557,0,19.125-8.568,19.125-19.125C612,295.443,603.432,286.875,592.875,286.875z M306,133.76c-95.128,0-172.24,77.112-172.24,172.24S210.872,478.24,306,478.24S478.24,401.128,478.24,306S401.128,133.76,306,133.76z M306,439.837c-73.918,0-133.837-59.919-133.837-133.837S232.082,172.163,306,172.163S439.837,232.082,439.837,306S379.918,439.837,306,439.837z"/>
+		</g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M268.279,496c-67.574,0-130.978-26.191-178.534-73.745S16,311.293,16,243.718A252.252,252.252,0,0,1,154.183,18.676a24.44,24.44,0,0,1,34.46,28.958,220.12,220.12,0,0,0,54.8,220.923A218.746,218.746,0,0,0,399.085,333.2h0a220.2,220.2,0,0,0,65.277-9.846,24.439,24.439,0,0,1,28.959,34.461A252.256,252.256,0,0,1,268.279,496ZM153.31,55.781A219.3,219.3,0,0,0,48,243.718C48,365.181,146.816,464,268.279,464a219.3,219.3,0,0,0,187.938-105.31,252.912,252.912,0,0,1-57.13,6.513h0a250.539,250.539,0,0,1-178.268-74.016,252.147,252.147,0,0,1-67.509-235.4Z" class="ci-primary"/>
+        </svg>
+          
+        <div class="dark">
+            <div class="promo-dark">
+                <img src="/img/night.jpg" alt="sdf">
+                <div class="dark-blur">
+                    <h2>WELCOME to the 🌙 Dark theme 🌙</h2>
+                </div>
+                
+                
+                
+            </div>
+                  
+
+            
+        </div>
+    </div>
+
+            
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>
