@@ -1,906 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PINEAPP</title>
         <style>
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
 *{
     padding: 0;
     margin: 0;
-    font-family: 'Work Sans', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 body{
-    background: linear-gradient(163deg, rgba(10,130,112,1) 0%, rgba(14,31,64,1) 100%);
-    height: 2000px;
+    background-image: url(../img/background.jpg);
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 header{
-    width: 100%;
-    height: 100px;
-    background-color: #1c1f26;
-    display: flex;
-    box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.2);
-}
-.button-sidebar{
-    margin: auto 50px auto auto;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    justify-content: center;
-    align-items: flex-end;
-    z-index: 4;
-    transition: top 1s;
-}
-
-.stack{
-    position: fixed;
-    top: 25px; /* Stay at the top */
-    right: 0;
-}
-
-.stack>.button-sidebar-item:nth-child(1){
-    width: 40px;
-    height: 2px;
-    transition: 0.3s;
-}
-
-.stack>.button-sidebar-item:nth-child(2){
-    width: 40px;
-    height: 2px;
-    transition: 0.3s;
-}
-
-.stack>.button-sidebar-item:nth-child(3){
-    width: 40px;
-    height: 2px;
-    transition: 0.3s;
-}
-
-.button-sidebar-item{
-    width: 30px;
-    height: 4px;
-    background-color: #7fffd4;
-    position: relative;
-    transition: 0.5s;
-    box-shadow: 2px 2px 10px 2px rgba(127, 255, 212, 0.3);
-}
-
-.button-sidebar:hover>.button-sidebar-item:nth-child(1){
-    width: 40px;
-    height: 2px;
-    transition: 0.3s;
-}
-.button-sidebar:hover>.button-sidebar-item:nth-child(2){
-    width: 40px;
-    height: 2px;
-    transition: 0.3s;
-}
-
-.button-sidebar:hover>.button-sidebar-item:nth-child(3){
-    width: 40px;
-    height: 2px;
-    transition: 0.3s;
-}
-
-.stack:hover>.button-sidebar-item:nth-child(1){
-    width: 30px;
-    height: 4px;
-    transition: 0.3s;
-}
-.stack:hover>.button-sidebar-item:nth-child(2){
-    width: 30px;
-    height: 4px;
-    transition: 0.3s;
-}
-
-.stack:hover>.button-sidebar-item:nth-child(3){
-    width: 30px;
-    height: 4px;
-    transition: 0.3s;
-}
-
-.fixed{
-    position: fixed;
-    right: 0;
-    transition: top 1s;
-}
-
-.closed{
-    transition: right 0.5s;
-}
-
-main{
-    padding: 0 50px;
-    margin: 0 150px;
-    background-color: #1f212a;
-    box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.5);
-    transition: 1s;
-}
-
-ul{
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-}
-
-@keyframes jump{
-    0%{
-        transform: translateX(0)
-    }
-    50%{
-        transform: translateX(50px)
-    }
-    100%{
-        transform: translateX(0)
-    }
-}
-
-h1{
-    width: 580px;
-    font-size: 60px;
-    text-transform: uppercase;
-    background: linear-gradient(212deg, rgba(204,251,255,1) 30%, rgba(80,213,135,1) 57%, rgba(239,150,197,1) 86%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 50px;
-    transition: 1s;
-}
-
-h1:hover{
-    width: 680px;
-    font-size: 80px;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: 0.5s;
-}
-
-h2{
-    width: 350px;
-    text-align: start;
-    font-size: 30px;
-    color: white;
-    margin-left: 10px;
-    text-transform: uppercase;
-}
-
-h2:hover{
-    animation: jump 1s forwards;
-}
-
-h3{
-    color: #FFF;
-    margin-bottom: 10px;
-}
-
-h4{
-    color: #fff;
-    margin-bottom: 5px;
-}
-
-.menu{
-    display: flex;
-    gap: 50px;
-    margin: 10px;
-    padding: 50px;
-}
-
-.menu-item{
-    position: relative;
-    min-width: 80px;
-    height: 80px;
-    transition:0.5s;
-}
-
-.menu-item:hover{
-    min-width: 160px;
-    transition:0.5s;
-    
-}
-
-.menu-item::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50px; 
-    padding: 5px; 
-    background:linear-gradient(159deg, rgba(108,99,255,1) 0%, rgba(248,164,216,1) 100%); 
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-        mask-composite: exclude;
-    
-}
-
-.menu-item::after{
-    position: relative;
-}
-
-.menu-item-link{
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 15px;
-    left: 15px;
-}
-
-.home{
-    background: url(img/home.svg) no-repeat;
-}
-
-.news{
-    background: url(img/news.svg) no-repeat;
-}
-
-.user{
-    background: url(img/user.svg) no-repeat;
-    width: 60px;
-    height: 60px;
-    top: 10px;
-    left: 10px;
-}
-
-.menu-item-link::before{
-    content: "";
-    width: 200px;
-    color: white;
-    position: absolute;
-    right: -170px;
-    transition:0.5s;
-    opacity: 0;
-}
-
-.menu-item:hover > .home::before{
-    content: "HOME";
-    transition:0.5s;
-    top: 15px;
-    right: -225px;
-    opacity: 1;
-}
-    
-.menu-item:hover > .news::before{
-    content: "NEWS";
-    transition:0.5s;
-    top: 15px;
-    right: -225px;
-    opacity: 1;
-}
-
-.menu-item:hover > .user::before{
-    content: "USER";
-    transition:0.5s;
-    top: 20px;
-    right: -225px;
-    opacity: 1;
-}
-
-.buttons{
-    display: flex;
-    gap: 50px;
-    margin: 10px;
-    padding: 50px;
-}
-
-
-.button-item:nth-child(1){
-    color: #7f00ff;
-}
-
-.button-item:nth-child(2){
-    color: #48cfad;
-}
-
-.button-item:nth-child(3){
-    color: #ec87c0;
-}
-
-.button-item:nth-child(1):hover{
-    background-color: #7f00ff;
-    box-shadow: 0px 0px 53px 0px rgba(127, 0, 255, 0.5);
-}
-
-.button-item:nth-child(2):hover{
-    background-color: #48cfad;
-    box-shadow: 0px 0px 53px 0px rgba(72, 207, 173, 0.5);
-}
-
-.button-item:nth-child(3):hover{
-    background-color: #ec87c0;
-    box-shadow: 0px 0px 53px 0px rgba(236, 135, 192, 0.5);
-}
-
-.button-item:nth-child(1)::before{
-    border-top: 2px solid #7f00ff;
-    border-left: 2px solid #7f00ff;
-}
-
-.button-item:nth-child(2)::before{
-    border-top: 2px solid #48cfad;
-    border-left: 2px solid #48cfad;
-}
-
-.button-item:nth-child(3)::before{
-    border-top: 2px solid #ec87c0;
-    border-left: 2px solid #ec87c0;
-}
-
-.button-item:nth-child(1)::after{
-    border-bottom: 2px solid #7f00ff;
-    border-right: 2px solid #7f00ff;
-}
-
-.button-item:nth-child(2)::after{
-    border-bottom: 2px solid #48cfad;
-    border-right: 2px solid #48cfad;
-}
-
-.button-item:nth-child(3)::after{
-    border-bottom: 2px solid #ec87c0;
-    border-right: 2px solid #ec87c0;
-}
-
-.button-item{
-    padding: 20px 30px;
-    position: relative;
-    text-transform: uppercase;
-    text-align: center;
-    width: 60px;
-    height: 20px;
-    transition: 0.5s;
-    
-    
-}
-
-.button-item:hover{
-    color: #fff;
-    transition: 0.5s;
-    transition-delay: 0.5s;
-    
-}
-
-.button-item::before{
-    content: "";
-    width: 10px;
-    height: 10px;
     position: absolute;
     top: 0;
     left: 0;
-    
-    transition-delay: 0.5s;
-    transition: 0.6s;
-    
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 100;
 
-}
-
-.button-item:hover::after{
-    transition: 0.6s;
-    width: 98%;
-    height: 96.5%;
-}
-
-.button-item::after{
-    content: "";
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    border-bottom: 2px solid #7f00ff;
-    border-right: 2px solid #7f00ff;
-    transition-delay: 0.5s;
-    transition: 0.6s;
-    
-}
-
-.button-item:hover::before{
-    transition: 0.5s;
-    width: 98%;
-    height: 96.5%;
-    
-}
-.ministories{
     display: flex;
-    gap: 50px;
-    margin: 10px;
-    padding: 50px;
-    height: 500px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.ministories-item{
+header .logo{
     position: relative;
-    transition: 0.5s;
-    width: 150px;
-    height: 200px;
-    border-radius: 20px;
-    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.31);
-}
-
-.ministories-item:hover{
-    width: 375px;
-    height: 500px;
-    transition: 0.5s;
-    box-shadow: 4px 4px 68px 0px rgba(0, 0, 0, 0.65);
-}
-
-.ministories-item:hover>img{
-    width: 375px;
-    height: 500px;
-    transition: 0.5s;
-}
-
-.ministories-item:hover>.ministories-content{
-    width: 375px;
-    height: 500px;
-    transition: 0.5s;
-}
-
-.ministories-item:hover>.ministories-content>span{
-    font-size: 60px;
-    transition: 0.5s;
-}
-
-.ministories-item>img{
-    position: absolute;
-    width: 150px;
-    height: 200px;
-    border-radius: 20px;
-    transition: 0.5s;
-}
-
-.ministories-content{
-    position: relative;
-    width: 150px;
-    height: 200px;
-    border-radius: 20px;
-    background: linear-gradient(209deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8) 100%);
-    transition: 0.5s;
-}
-.ministories-content>span{
-    font-size: 20px;
-    position: absolute;
+    font-size: 2em;
     color: #fff;
-    bottom: 30px;
-    left: 30px;
-    transition: 0.5s;
-}
-
-
-.ministories-content>p{
-    opacity: 0;
-    font-size: 20px;
-    position: absolute;
-    color: #fff;
-    bottom: 0;
-    left: 70px;
-    transition: 0.2s;
-}
-.ministories-item:hover>.ministories-content>p{
-    opacity: 1;
-    font-size: 20px;
-    bottom: 45px;
-    transition: 1s;
-    transition-delay: 0.5s;
-
-}
-
-.progressbars{
-    margin: 0;
-    padding: 50px;
-}
-
-.progressbar{
-    width: 600px;
-    height: 50px;
-    border: #fff solid 1px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.progressbars:hover>.progressbar-item:nth-child(2)>.progressbar>.progressbar-inside{
-    width: 90%;
-    transition-delay: 3s;
-    transition: 2s;
-    background-color: #7fffd4;
-    box-shadow: 2px 2px 10px 2px rgba(127, 255, 212, 0.88);
-}
-
-.progressbars:hover>.progressbar-item:nth-child(3)>.progressbar>.progressbar-inside{
-    width: 70%;
-    transition-delay: 3s;
-    transition: 2s;
-    background-color: #7f00ff;
-    box-shadow: 2px 2px 10px 2px rgba(127, 0, 255, 0.88);
-}
-
-.progressbars:hover>.progressbar-item:nth-child(4)>.progressbar>.progressbar-inside{
-    width: 10%;
-    transition-delay: 3s;
-    transition: 2s;
-    background-color: #ec87c0;
-    box-shadow: 2px 2px 10px 2px rgba(236, 135, 192, 0.88);
-}
-
-.progressbar-inside{
-    background-color: #fff;
-    border-radius: 5px;
-    width: 0%;
-    height: 100%;
-    box-shadow: 2px 2px 10px 2px rgba(255, 255, 255, 0.88);
-    transition-delay: 99999999s;
-    transition: 99999999s;
-}
-
-.sidenav {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 300px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    right: 0;
-    background-color: #111; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 100px;
-    box-shadow: -10px 4px 10px 0px rgba(0, 0, 0, 0.31);
-    border-left: 1px #7fffd4 solid;
-    transition: right 0.3s;
-    transform: translateX(300px);
-}
-
-.sidenav>a{
-    color: white;
-    font-size: 20px;
     text-transform: uppercase;
-
-    padding: 10px;
-    border-top: #7fffd4 1px solid;
-    border-bottom: #7fffd4 1px solid;
-    transition: 0.3s;
-}
-.sidenav>a:hover{
-    color: #7f00ff;
-    font-size: 25px;
-    box-shadow: 2px 2px 10px 2px rgba(127, 0, 255, 0.5);
-    transition: 0.3s;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+    transition: .5s;
 }
 
-main.active{
-    filter: blur(20px);
-    pointer-events: none;
-    user-select: none;
+header .toggle{
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+    background: url(../img/menu.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.animated-button {
-  text-decoration: none;
-  display: inline-block;
-  margin: 10px 20px;
-  padding: 15px 30px;
-  overflow: hidden;
-  border: 2px solid;
-  border-bottom-width: 4px;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: rgba(30, 255, 188, 1);
-  background: rgba(255, 255, 255, 1);
-  transition: color 0.3s, background 0.5s;
-}
-.animated-button:hover {
-  animation: stripes 0.75s infinite linear;
-  background: linear-gradient(
-    45deg,
-    rgba(30, 255, 188, 1) 25%,
-    rgba(255, 255, 255, 1) 25%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(30, 255, 188, 1) 50%,
-    rgba(30, 255, 188, 1) 75%,
-    rgba(255, 255, 255, 1) 75%,
-    rgba(255, 255, 255, 1)
-  );
-  background-size: 10px 10px;
-  color: #ff50e5;
-}
-@keyframes stripes {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 50px 0;
-  }
+header .toggle.active{
+    background: url(../img/close.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 25px;   
 }
 
-.popup{
-    position: fixed;
-    visibility: hidden;
-    border-radius: 20px;
-    background-color: #fff;
-    width: 800px;
-    height: 600px;
-    top: 10%;
-    left: 30%;
+header .toggle.active::before{
+    content: 'close';
 }
 
-.popup.active{
-    visibility: visible;
-    top: 20%;
-    transition: 1s;
+.background__icons{
+    position: relative;
+    width: 140%;
+    animation: anim 5s infinite;
+    object-fit: cover;
 }
 
-.popup button{
+header .toggle::before{
+    content: 'MENU';
     position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
-.popup img{
-    position: absolute;
-    margin: 20px;
-    width: 400px;
-}
-
-.popup h4{
-    position: absolute;
+    right: 45px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    padding: 5px 5px;
+    background: #fff;
     color: #111;
-    top: 20px;
-    right: 90px;
 }
 
-.popup p{
+@keyframes anim {
+    0%,100%{
+        transform: translateY(-10px) scale(103%);
+    }
+    50%{
+        transform: translateY(10px) ;
+    }
+}
+
+.glass{
     position: absolute;
-    color: #111;
+    top: 0;
+    left: 0;
     width: 40%;
-    right: 43px;
-    top: 50px;
-
+    height: 100%;
+    z-index: 1;
+    backdrop-filter: blur(15px);
+    box-shadow: 10px 0 15px rgba(0, 0, 0, .1);
+    transition: .5s;
 }
 
-        </style>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+section.active .glass{
+    width: 100%;
+    backdrop-filter: blur(20px);
+    box-shadow: 10px 0 15px rgba(0, 0, 0, .1);
+    transition-delay: 0s;
+}
 
-        <title>EXPEREMENTAL</title>
+section .content{
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    transition: .5s;
+    transition-delay: 1s;
+}
+
+section.active .content{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-200px);
+    transition-delay: 0s;
+}
+
+section .content h2{
+    position: absolute;
+    top: -250px;
+    left: 40vw;
+    color: #fff;
+    font-size: 9vw;
+    line-height: 0.88em;
+    text-shadow: 0 5px 5px rgba(0,0,0,.2);
+    font-family: 'Dancing Script', cursive;
+}
+
+section .content h2 span{
+    font-size: 0.2em;
+    font-weight: 300;
+    letter-spacing: 5px;
+    background: #fff;
+    color: #111;
+    padding: 0 10px;
+    text-shadow: 0 5px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+    text-transform: uppercase;
+    
+}
+
+section .sci{
+    position: absolute;
+    bottom: 40px;
+    right: 100px;
+    display: flex;
+    z-index: 100;
+}
+
+section .sci li{
+    list-style: none;
+    margin: 5px;
+    padding: 0 6px;
+    background: #fff;
+    transition: .5s;
+    transition-delay: calc(.2s * var(--i));
+}
+
+section.active .sci li{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
+}
+
+section .sci li a{
+    color: #111;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+section .pages{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    transform: translate(-50% -50%);
+    z-index: 100;
+}
+
+section .pages li{
+    list-style: none;
+    text-align: center;
+    margin: 15px 0;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+    transform: translateX(200px);
+    transition-delay: calc(.2s * var(--i));
+}
+
+section.active .pages li{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+section .pages li a{
+    color: #111;
+    font-size: 1.5em;
+    letter-spacing: 5px;
+    text-decoration: none;
+    font-weight: 300;
+    text-transform: uppercase;
+    background-color: #fff;
+    padding: 4px 10px;
+    display: inline-block;
+    transition: .5s;
+}
+
+section .pages li a:hover{
+    background-color: #111;
+    color: #fff;
+    letter-spacing: 10px;
+    text-transform: lowercase;
+}
+
+@media (max-width: 991px) {
+    .background__icons{
+        width: 230%;
+    }
+
+    header{
+        padding: 20px;
+    }
+    section .sci{
+        bottom: 20px;
+        right: 20px;
+    }
+    .glass{
+        width: 50%;
+    }
+    section .content h2{
+        top: -150px;
+        left: 70vw;
+        font-size: 14vw;
+    }
+
+    section .pages{
+        left: 32%;
+    }
+}
+        </style>
     </head>
     <body>
-        
-        <header>
-            <div class="button-sidebar">
-                <div class="button-sidebar-item"></div>
-                <div class="button-sidebar-item"></div>
-                <div class="button-sidebar-item"></div>
+        <section>
+            <header>
+                <a href="#" class="logo">PINEAPP</a>
+                <div onclick="menuToggle()" class="toggle"></div>
+            </header>
+            <div class="glass"></div>
+            <div class="content">
+                <h2>EXPERENETAL SITES <br><span>by pineapp</span></h2>
             </div>
-        </header>
-        <div class="sidenav closed">
-            <a href="#pb1">PRETTY BUTTONS №1</a>
-            <a href="#pb2">PRETTY BUTTONS №2</a>
-            <a href="#mnstrs">ministories</a>
-            <a href="#prgrsbr">PROGRESSBARS</a>
-        </div>
-        <main>
-        <h1>Experemental</h1>
-        <h2 id="pb1">Pretty buttons №1</h2>
-        <ul class="menu">
-            <li class="menu-item">
-                <a class="menu-item-link home" href="main.html"></a>
-            </li>
-            <li class="menu-item">
-                <a class="menu-item-link news" href="#">  </a>
-            </li>
-            <li class="menu-item">
-                <a class="menu-item-link user" href="#"></a>
-            </li>
-        </ul>
-        <h2 id="pb2">Pretty buttons №2</h2>
-        <div class="buttons">
-            <a href="#" class="button-item">first</a>
-            <a href="#" class="button-item">second</a>
-            <a href="#" class="button-item">third</a>
-        </div>
-        <h2 id="mnstrs">ministories</h2>
-        <ul class="ministories">
-            <li class="ministories-item">
-                <img src="https://javasea.ru/uploads/posts/2018-06/1529932822_vesna-gory-ozero.jpg" alt="1">
-                <div class="ministories-content">
-                    <span>1</span>
-                    <p>First text field, without any meaning</p>
-                </div>
-            </li>
-            <li class="ministories-item">
-                <img src="https://mobimg.b-cdn.net/v3/fetch/13/13fcae729f327cc0ba8e82dfda2291ea.jpeg" alt="2">
-                <div class="ministories-content">
-                    <span>2</span>
-                    <p>Second text field, without any meaning</p>
-                </div>
-            </li>
-            <li class="ministories-item">
-                <img src="https://oboi-telefon.ru/wallpapers/62310/37307.jpg" alt="3">
-                <div class="ministories-content">
-                    <span>3</span>
-                    <p>Third text field, without any meaning</p>
-                </div>
-            </li>
-        </ul>
-        <h2 id="prgrsbr">progressbars <br>(hover it)</h2>
-        <ul class="progressbars">
-            <h3>Знание:</h3>
-            <li class="progressbar-item">
-                <h4>HTML</h4>
-                <div class="progressbar">
-                    <div class="progressbar-inside"></div>
-                </div>
-            </li>
-            <li class="progressbar-item">
-                <h4>CSS</h4>
-                <div class="progressbar">
-                    <div class="progressbar-inside"></div>
-                </div>
-            </li>
-            <li class="progressbar-item">
-                <h4>JS</h4>
-                <div class="progressbar">
-                    <div class="progressbar-inside"></div>
-                </div>
-            </li>
-        </ul> 
-    </main>
-    <div class="popup">
-        <img src="img/1.jpg" alt="1231">
-        <h4>First text field, without any meaning</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, enim. Officia cumque similique, iste autem modi fuga nulla facere nemo neque quibusdam perferendis aliquam odio porro natus iusto saepe corporis!</p>
-        <button onclick="toggle()" class="animated-button">close</button>
-    </div>
-        <script>
-let sidebarButton = document.querySelector('.button-sidebar');
-let sidebar = document.querySelector('.sidenav');
-const links = document.querySelectorAll('.sidenav > a');
-let blur = document.querySelector('main');
-let popup = document.querySelector('.popup');
-let ministories = document.querySelectorAll('.ministories');
-
-
-
-const stories = [
-    {
-        src: '1.jpg',
-        head: 'First text field, without any meaning'
-    },
-    {
-        src: '2.jpeg',
-        head: 'Second text field, without any meaning'
-    },
-    {
-        src: '3.jpg',
-        head: 'Third text field, without any meaning'
-    }
-]
-
-const storiesClickHandler = (evt) => {
-    const element = evt.target.closest('li');
-    if (!element) {
-       return;
-    }
-    evt.preventDefault();
-    if(element == document.querySelector('.ministories-item:nth-child(1)')){
-        createPopup(stories[0]);
-    }
-    else if(element == document.querySelector('.ministories-item:nth-child(2)')){
-        createPopup(stories[1]);
-    }
-    else{
-        createPopup(stories[2]);
-    }
-}
-
-const createPopup = (popupItem) =>{
-    document.querySelector('.popup>img').src = `img/` + popupItem.src;
-    document.querySelector('.popup>h4').textContent = popupItem.head;
-    toggle();
-}
-
-const toggle = () => {
-    blur.classList.toggle('active');
-    popup.classList.toggle('active');
-}
-
-const elementClickHandler = (evt) => {
-    const element = evt.target.closest('a');
-    if (!element) {
-       return;
-    }
-    // отменяем действие по умолчанию
-    evt.preventDefault();
-    // получаем идентификатор элемента для перехода
-    const blockId = element.getAttribute('href');
-    if (blockId && blockId !== '#') {
-        // находим элемент для перехода
-        const block = document.querySelector(blockId);
-        if (block) {
-        // плавно переходим к элементу
-        block.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        });
-        }
-    }   
-};
-for(let i = 0; i < links.length; i++){
-    links[i].addEventListener('click', elementClickHandler)
-}
-
-for(let i = 0; i < ministories.length; i++){
-    ministories[i].addEventListener('click', storiesClickHandler)
-}
-
-
-
-function getScrollPercentage() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    let windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-    
-    let documentHeight = Math.max(
-        document.body.scrollHeight, document.body.offsetHeight, document.body.clientHeight,
-        document.documentElement.scrollHeight, document.documentElement.offsetHeight, document.documentElement.clientHeight
-    );
-
-    return ((scrollTop / (documentHeight - windowHeight)) * 100);
-
-}
-
-window.onscroll = function() {
-	if(getScrollPercentage() > 25){
-        sidebarButton.classList.add("fixed")
-        sidebarButton.style.top = "30px"
-    }
-    else if(getScrollPercentage() < 3){
-        sidebarButton.classList.remove("fixed");
-        
-    }
-};
-
-
-const sidebarButtonClickHandler = (evt) =>{
-    const element = evt.target.closest('.button-sidebar');
-    if(!element){
-        return;
-    }
-    evt.preventDefault();
-    if(sidebar.classList.contains('closed')){
-        sidebar.style.right = "300px"
-        sidebar.classList.toggle('closed');
-        sidebarButton.classList.toggle('stack');
-    }
-    else{
-        sidebar.style.right = "0px"
-        sidebar.classList.toggle('closed');
-        sidebarButton.classList.toggle('stack');
-    }
-    
-    
-}
-sidebarButton.addEventListener('click', sidebarButtonClickHandler);
+            <img class="background__icons" src="img/Icons.png" alt="Icons">
+            <ul class="sci">
+                <li style="--i:1"><a href="#">VKontakte</a></li>
+                <li style="--i:2"><a href="#">Instagramm</a></li>
+                <li style="--i:3"><a href="#">Steam</a></li>
+            </ul>
+            <ul class="pages">
+                <li style="--i:1"><a href="#">First</a></li>
+                <li style="--i:2"><a href="#">Second</a></li>
+                <li style="--i:3"><a href="#">Third</a></li>
+            </ul>
+        </section>
+        <script type="text/javascript">
+            const menuToggle = () =>{
+                const toggleMenu = document.querySelector('.toggle');
+                const section = document.querySelector('section');
+                toggleMenu.classList.toggle('active');
+                section.classList.toggle('active');
+            }
         </script>
     </body>
 </html>
