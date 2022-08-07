@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+body{
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo{
+    position: relative;
+    font-size: 2em;
+    color: rgb(56, 56, 56);
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+    transition: .5s;
+}
+
+.phoneopener{
+    z-index: 100;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .05);
+    height: 500px;
+    width: 100px;
+    top: 20%;
+    border-radius: 0 40px 40px 0;
+    transform: translateX(-50px);
+    transition: .2s;
+}
+
+.phoneopener.active{
+    animation: poActive 1s;
+}
+
+.phoneopener.active svg{
+    transform: rotate(180deg);
+    transition: .5s;
+}
+
+.phoneopener:hover.active svg{
+    animation: animActive 2s infinite;
+}
+
+@keyframes animActive {
+    0%,100%{
+        transform: translateX(0px) rotate(180deg);
+    }
+    50%{
+        transform: translateX(-8px) rotate(180deg);
+    }
+}
+
+@keyframes poActive {
+    0%,100%{
+        transform: translateX(-50px);
+    }
+    50%{
+        transform: translateX(0);
+    }
+}
+
+.phoneopener:hover{
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.phoneopener svg{
+    width: 40px;
+    position: absolute;
+    top: 42%;
+    right: 10px;
+    fill: #fff;
+    transition: .2s;
+}
+
+.phoneopener:hover svg{
+    fill: #333;
+    animation: anim 2s infinite;
+}
+
+@keyframes anim {
+    0%,100%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(10px);
+    }
+}
+
+.phoneopener.new{
+    background-color: rgba(255, 0, 0, .1);
+    transition: .5s;
+}
+
+.phone{
+    background-color: #111;
+    width: 320px;
+    height: 600px;
+    margin-top: 200px;
+    border-radius: 45px;
+    position: fixed;
+    transform: translateX(-400px);
+    transition: .5s;
+    z-index: 100;
+}
+
+.flashlight{position: absolute;
+    background-image: url(img/flashlight.svg);
+    background-size: 90px;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    margin-top: 400px;
+    margin-left: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    width: 100px;
+    height: 100px;
+    
+    z-index: 99;
+    transition: .5s;
+}
+
+.flashlight.active{
+    transform: translateX(400px) translateY(-300px);
+}
+
+.phone.active{
+    transform: translateX(150px);
+    transition: .5s;
+}
+
+.phone .faceid{
+    position: absolute;
+    width: 50%;
+    height: 35px;
+    background-color: #111;
+    left:25%;
+    border-radius: 0 0 15px 15px;
+    z-index: 100;
+}
+
+.home{
+    position: absolute;
+    background-color: #111;
+    width: 40%;
+    height: 6px;
+    bottom: 13px;
+    left: 30%;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+.phone .messenger{
+    position: absolute;
+    top: 1.3%;
+    left: 2.5%;
+    border-radius: 40px;
+    width: 95%;
+    height: 97.3%;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.messenger .header{
+    position: absolute;
+    width: 100%;
+    height: 75px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 2;
+}
+
+.messenger .header a img{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 40%;
+    left: 5%;
+    object-fit: cover;
+    border-radius: 100%;
+    margin: auto 0 0 0;
+}
+
+.messenger .header span{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 45%;
+    left: 24%;
+    color: #0077ff;
+    font-weight: 700;
+}
+
+.messenger .header span::after{
+    content: 'online';
+    color: #ccc;
+    font-weight: 400;
+    left: 0;
+}
+
+.messenger .header span.writting::after{
+    content: 'печатает...';
+}
+
+.messenger .docbar{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background-color: #edeef0;
+    bottom: 0;
+    display: flex;
+    gap: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.docbar .plus{
+    color: #0077ff;
+    font-size: 1.5em;
+    border: 2px #0077ff solid;
+    padding: 10px 0 0 4px;
+    line-height: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+}
+
+.placeholder{
+    color: #ccc;
+    background-color: #fff;
+    width: 65%;
+    height: 27px;
+    padding: 5px 10px;
+    border-radius: 50px;
+}
+
+.messenger .messages{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 20px;
+    padding: 0 10px 20px 10px ;
+    margin-top: 75px;
+    height: calc(100% - 60px - 75px);
+    position: relative;
+}
+
+.messenger .messages .message-item{
+    display: flex;
+    bottom: 10px;
+    left: 10px;
+    gap: 15px;
+}
+
+.messenger .messages .message-item img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin: auto 0 0 0;
+}
+
+.messenger .messages .message span{
+    color: #0077ff;
+    margin-left: 5px;
+}
+
+.messenger .messages .message p{
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    letter-spacing: 1.1px;
+}
+
+.main{
+    position: relative;
+    height: 100vh;
+}
+
+.hidden__button{
+    position: absolute;
+    top: 500px;
+    right: 200px;
+    font-size: 2em;
+    padding: 25px 50px;
+    background-color: #fff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.hidden__button.active{
+    color: #000;
+    border: #000 2px solid;
+    animation: animButton 3s;
+}
+
+.hidden__button.active.agressive{
+    animation: agressive 3s;
+    background-color: #f00;
+    transition: 1s;
+    color: #fff;
+    box-shadow: 0px 0px 100px #f00;
+}
+
+@keyframes agressive {
+    0%, 100%{
+        transform: scale(100%) rotate(0);
+    }
+    10%,20%,30%,40%,50%,60%,70%,80%{
+        transform: scale(200%) rotate(15deg);
+    }
+    15%,25%,35%,45%,55%,65%,75%,85%{
+        transform: scale(200%) rotate(-15deg);
+    }
+    20%,40%,65%,85%{
+        transform: scale(150%);
+    }
+}
+
+@keyframes animButton {
+    0%,100%{
+        transform: scale(100%) rotate(0);
+    }
+
+    20%{
+        transform: scale(200%);
+    }
+
+    40%,50%,60%,70%{
+        transform: scale(200%) rotate(30deg);
+    }
+    45%,55%,65%,75%{
+        transform: scale(200%) rotate(-30deg);
+    }
+}
+
+.title{
+    width: 100%;
+    height: 800px;
+    background-color: #000;
+    position: relative;
+}
+
+.title .title__header{
+    position: absolute;
+    color: #fff;
+    font-size: 8em;
+    right: 10px;
+}
+
+.title .rules{
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 50px;
+    margin-left: 40px;
+}
+
+.rule{
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.rule::after{
+    position: absolute;
+    width: 300px;
+    color: #fff;
+    right: -350px;
+    font-size: 1.5em;
+}
+
+.rules .red{
+    background-color: #f00;
+}
+
+.rules .red::after{
+    content: '- ЛАВА (Если наступить, то придётся начать сначала)';
+}
+
+.rules .gray{
+    background-color: #aaa;
+}
+
+.rules .gray::after{
+    content: '- ПОЛ (Можешь спокойно по нему ходить)';
+}
+
+.rules .blue{
+    background-color: #0077ff;
+}
+
+.rules .blue::after{
+    content: '- КЛЮЧ (Ключи нужны для открытия выхода)';
+}
+
+.rules .aqua{
+    background-color: aquamarine;
+}
+
+.rules .aqua::after{
+    content: '- ВЫХОД (Если все 4 ключа собраны)';
+}
+
+.labyrinth{
+    display: grid;
+    height: 100vh;
+
+    grid-template-columns: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%; /* два столбца 100px и 600px */
+    grid-template-rows: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%; /* три ряда 40px, 200px и 40px */
+    grid-template-areas: 
+    ". . . . . . . . . . . . f . . . . . . . "
+    ". . . . . . . . . . . . f . . . . . . . "
+    ". . . . . f8 . . . . . . f . . . . . . . "
+    ". . . . . f8 f5 f5 f5 f5 c2 . f . . . . . . . "
+    ". f4 f4 f4 f4 f8 . . . . . . f . . . . . . . "
+    ". f3 . . . f8 . . . . . . f . . . . . . . "
+    ". f3 . . . f8 . . . . . . f f1 f1 f1 f1 f1 f1 . "
+    ". f3 . . . f8 . . . . . . f . . . . . f2 . "
+    ". f3 c1 . . f8 . . . . . . . . . . . . f2 . "
+    ". f3 . . . f8 . . . . . . . f6 c3 . . . f2 . "
+    ". f3 . . . f8 f7 f7 f7 f7 f7 f7 f7 f7 . . . . f2 . "
+    ". f3 . . . f8 . . . . . . . . . . . . f2 . "
+    ". . . . . f8 . f12 . . . . . . . c4 f10 . f2 . "
+    ". . . . . f8 . f12 . . . . . . . . f10 . f2 . "
+    ". . . . . f8 . f12 . . . . . . . . f10 . f2 . "
+    ". . . . . f8 . f12 f11 f11 f11 f11 f11 f11 f11 f11 f11 f11 f11 . "
+    ". . . . . f8 . f12 . . . . . . . . . . . . "
+    ". . . . . f8 . f12 . . . . . . . . . . . . "
+    ". . . f9 f9 f9 f9 f12 . . . . . . . . . . . . "
+    ". . . . . . . e . . . . . . . . . . . . ";
+}
+
+.floor{
+    background-color: #aaa;
+    grid-area: f;
+}
+
+.floor1{
+    grid-area: f1;
+}
+
+.floor2{
+    grid-area: f2;
+}
+
+.floor3{
+    grid-area: f3;
+}
+
+.floor4{
+    grid-area: f4;
+}
+
+.floor5{
+    grid-area: f5;
+}
+
+.floor6{
+    grid-area: f6;
+}
+
+.floor7{
+    grid-area: f7;
+}
+
+.floor8{
+    grid-area: f8;
+}
+
+.floor9{
+    grid-area: f9;
+}
+
+.floor10{
+    grid-area: f10;
+}
+
+.floor11{
+    grid-area: f11;
+}
+
+.floor12{
+    grid-area: f12;
+}
+
+.lava{
+    background-color: #f00;
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+}
+
+.end{
+    background-color: aquamarine;
+    grid-area: e;
+}
+
+.checkpoint{
+    background-color: #0077ff;
+}
+
+.ch1{
+    grid-area: c1;
+}
+
+.ch2{
+    grid-area: c2;
+}
+
+.ch3{
+    grid-area: c3;
+}
+
+.ch4{
+    grid-area: c4;
+}
+
+.notification{
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(310px);
+    right: 10px;
+    bottom: 10px;
+    width: 300px;
+    height: 100px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, .4);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 0, 0, .3);
+    z-index: 100;
+    transition: .5s;
+}
+
+.notification.active{
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification span{
+    position: absolute;
+    margin: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.notification p{
+    position: absolute;
+    margin: 40px 0 0 10px;
+}
+.notification svg{
+    position: absolute;
+    width: 40px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.game{
+    display: none;
+}
+
+.game.active{
+    display: block;
+}
+
+.darker{
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.darker h2{
+    position: absolute;
+    font-size: 4em;
+    text-align: center;
+    top: 100px;
+    left: 28%;
+    opacity: 0;
+    transition: 1s;
+}
+
+.darker.lighte{
+    background-color: #111;
+}
+
+.darker.active{
+    background-color: #fff;
+}
+
+.darker.lighte.active{
+    background-color: #fff;
+}
+
+.darker.active h2{
+    opacity: 1;
+}
+
+.darker #lamp{
+    position: absolute;
+    width: 100px;
+    bottom: 150px;
+    right: 500px;
+}
+
+.darker.active #lamp{
+    fill: yellow;
+}
+
+.darker #lamp .lamp-light{
+    display: none;
+}
+
+.darker.active #lamp .lamp-light{
+    display: block;
+}
+
+.cards{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 50px;
+
+}
+
+.card-item{
+    padding: 15px 20px;
+    border: #000 2px solid;
+    color: #000;
+    opacity: 0;
+    transform: translateY(200px);
+    transition: .5s;
+    transition-delay: calc(1s * var(--i));
+}
+
+.darker.active .card-item{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.light{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--x) var(--y), transparent 10%, rgba(0,0,0,.95) 20%);
+    z-index: 100;
+}
+
+.light.active{
+    display: block;
+}
+        </style>
+        <title>PINEAPP</title>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" class="logo">PINEAPP</a>
+        </header>
+        <div class="notification">
+            <span>ОПА</span>
+            <p>Ты упал в лаву</p>
+            <svg onclick="closeNotif()" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="cross"><line class="cls-1" x1="7" x2="25" y1="7" y2="25"/><line class="cls-1" x1="7" x2="25" y1="25" y2="7"/></g></svg>
+        </div>
+        <section class="main">
+            <button onclick="secret()" class="hidden__button">Я кнопка</button>
+            <div onclick="poClick()" class="phoneopener">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 306 306" style="enable-background:new 0 0 306 306;" xml:space="preserve"><g><g id="keyboard-arrow-right"><polygon points="58.65,267.75 175.95,153 58.65,35.7 94.35,0 247.35,153 94.35,306 		"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+            </div>
+            <div class="phone">
+                <div onclick="lighter()" class="flashlight">
+
+                </div>
+                <div class="messenger">
+                    <div class="header">
+                        <a href="https://vk.com/dimaaaaa_kot"><img src="/img/avatar.jpg" alt="ava"></a>
+                        <span>Дима</span>
+                    </div>
+                    <ul class="messages">
+                        
+                    </ul>
+                    <div class="docbar">
+                        <span class="plus">+</span>
+                        <div class="placeholder">Сообщение</div>
+                    </div>
+                </div>
+                <div class="faceid"></div>
+                <div class="home"></div>
+            </div>
+        </section>
+        <section class="game">
+            <div class="title">
+                <div class="title__header">Лабиринт</div>
+                <div class="rules">
+                    <div class="rule red"></div>
+                    <div class="rule gray"></div>
+                    <div class="rule blue"></div>
+                    <div class="rule aqua"></div>
+                </div>
+            </div>
+            <div onmouseover="labyrinthGame(event)" class="labyrinth">
+                <div  class="lava"></div>
+                <div class="floor"></div>
+                <div class="floor floor1"></div>
+                <div class="floor floor2"></div>
+                <div class="floor floor3"></div>
+                <div class="floor floor4"></div>
+                <div class="floor floor5"></div>
+                <div class="floor floor6"></div>
+                <div class="floor floor7"></div>
+                <div class="floor floor8"></div>
+                <div class="floor floor9"></div>
+                <div class="floor floor10"></div>
+                <div class="floor floor11"></div>
+                <div class="floor floor12"></div>
+                <div class="checkpoint ch1"></div>
+                <div class="checkpoint ch2"></div>
+                <div class="checkpoint ch3"></div>
+                <div class="checkpoint ch4"></div>
+                <div class="end "></div>
+            </div>
+        </section>
+        <section class="darker">
+            <h2>Спасибо<br> за прохождение сайта!</h2>
+            <div class="cards">
+                <div class="card-item" style="--i:2"><a href="index.html">На главную</a></div>
+                <div class="card-item" style="--i:3" onclick="window.location.reload ();">Заново</div>
+                <div class="card-item" style="--i:4">VKontakte</div>
+            </div>
+            <svg onclick="lampON()" id="lamp" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M134.164,127.26H131.21v-8.9a53.372,53.372,0,1,0-64.372.009v8.889H63.885a1.941,1.941,0,0,0-1.94,1.94v12.453a1.94,1.94,0,0,0,1.94,1.94h.509v10.523a1.941,1.941,0,0,0,1.94,1.94h1.671a32.2,32.2,0,0,0,62.039,0h1.67a1.941,1.941,0,0,0,1.94-1.94V143.593h.51a1.939,1.939,0,0,0,1.939-1.94V129.2A1.94,1.94,0,0,0,134.164,127.26ZM69.92,115.827a49.5,49.5,0,1,1,58.209-.009,1.938,1.938,0,0,0-.8,1.568v9.874H111.083V107.394L123.9,94.37a9.108,9.108,0,1,0-3.494-1.983l-12.649,12.851a1.935,1.935,0,0,0-.557,1.361V127.26H90.845V106.6a1.94,1.94,0,0,0-.557-1.361l-12.65-12.85a9.022,9.022,0,1,0-3.493,1.982l12.821,13.024V127.26H70.718V117.4A1.94,1.94,0,0,0,69.92,115.827Zm51.393-30.133a5.177,5.177,0,1,1,5.177,5.177A5.183,5.183,0,0,1,121.313,85.694ZM71.559,90.871a5.177,5.177,0,1,1,5.176-5.177A5.183,5.183,0,0,1,71.559,90.871ZM65.825,131.14h66.4v8.574h-66.4Zm33.194,44.605a28.133,28.133,0,0,1-26.972-19.689H126A28.539,28.539,0,0,1,99.019,175.745Zm30.755-23.569h-61.5v-8.583h61.5Z"/><path class="lamp-light" d="M54.231,34.723a1.94,1.94,0,1,0,2.743-2.743L45.632,20.637a1.94,1.94,0,1,0-2.743,2.743Z"/><path class="lamp-light" d="M153.16,20.637,141.818,31.98a1.94,1.94,0,0,0,2.743,2.743L155.9,23.38a1.94,1.94,0,1,0-2.743-2.743Z"/><path class="lamp-light" d="M54.231,119.567,42.889,130.909a1.94,1.94,0,0,0,2.743,2.743L56.974,122.31a1.94,1.94,0,0,0-2.743-2.743Z"/><path class="lamp-light" d="M144.561,119.567a1.94,1.94,0,0,0-2.743,2.743l11.342,11.342a1.94,1.94,0,0,0,2.743-2.743Z"/><path class="lamp-light" d="M38.861,76.113H22.688a1.94,1.94,0,1,0,0,3.879H38.861a1.94,1.94,0,1,0,0-3.879Z"/><path class="lamp-light" d="M176.586,76.113H160.413a1.94,1.94,0,1,0,0,3.879h16.173a1.94,1.94,0,1,0,0-3.879Z"/></svg>
+        </section>
+        <div class="light">
+
+        </div>
+        <script src="/js/confetti.js"></script>
+        <script>
+            const start = ()=>{
+                setTimeout(()=>{confetti.start()},500)
+            }
+            const stop = (msec)=>{
+                setTimeout(()=>{confetti.stop()},msec)
+            }
+            const phoneopener = document.querySelector('.phoneopener');
+            const phone = document.querySelector('.phone');
+            const span = document.querySelector('.messenger>.header>span');
+            const buttonSecret = document.querySelector('.hidden__button');
+            let notification = document.querySelector('.notification');
+            const messenger = document.querySelector('ul.messages')
+            let k = 0;
+            let a = 0;
+            let click = 0;
+            let starting = false;
+            let ch1 = false;
+            let ch2 = false;
+            let ch3 = false;
+            let ch4 = false;
+            let ch = 0;
+            let startLabirinth = false;
+            let startDarker = false;
+            let endSite = false;
+            let pos = document.documentElement;
+            pos.addEventListener('mousemove', e =>{
+                pos.style.setProperty('--x', e.clientX + 'px')
+                pos.style.setProperty('--y', e.clientY + 'px')
+            });
+            
+
+            const poClick = () =>{
+                phoneopener.classList.remove('new');
+                phoneopener.classList.toggle('active');
+                phone.classList.toggle('active');
+                k--;
+                if(document.querySelector('.flashlight').classList.contains('active') && startDarker) document.querySelector('.flashlight').classList.remove('active') 
+                else if(!document.querySelector('.flashlight').classList.contains('active') && startDarker) document.querySelector('.flashlight').classList.add('active')
+            }
+
+            const newMessage = () =>{
+                if(!phone.classList.contains('active')){
+                    phoneopener.classList.add('new');
+                    k++;
+                } 
+                
+            }
+
+            const writting = (msec) =>{
+                span.classList.toggle('writting');
+                setTimeout(() => {span.classList.toggle('writting')}, msec);
+            }
+
+            const secret = () =>{
+                
+                if(starting && !buttonSecret.classList.contains('active')){
+                    buttonSecret.classList.add('active');
+                    start();
+                    stop(5000);
+                    writting(8000);
+                    setTimeout(() =>{createMessage('Поздравляю с находкой!')}, 8000);
+                    newMessage();
+                    writting(11000);
+                    setTimeout(() =>{createMessage('Теперь можешь пролистать дальше');document.querySelector('.game').classList.add('active')}, 11000);
+                }
+                else if(!buttonSecret.classList.contains('active')){
+                    buttonSecret.classList.add('active');
+                    start();
+                    stop(5000);
+                    writting(2000);
+                    setTimeout(() =>{createMessage('Дарова!')}, 2000);
+                    newMessage();
+                    writting(5000);
+                    setTimeout(() =>{createMessage('А ты не из терпеливых')}, 5000);
+                    writting(8000);
+                    setTimeout(() =>{
+                        createMessage('Тогда проходи дальше!')
+                        document.querySelector('.game').classList.add('active')
+                    }, 8000);
+                }
+                else if(click == 2){
+                    buttonSecret.textContent = "Ты уже нашёл меня:)";
+                }
+                else if(click == 10){
+                    buttonSecret.textContent = "Хватит на меня нажимать:|";
+                }
+                else if(click == 20){
+                    buttonSecret.textContent = "ПОЖАЛУЙСТА ПЕРЕСТАНЬ НА МЕНЯ КЛИКАТЬ D:<";
+                }
+                else if(click >= 40 && !buttonSecret.classList.contains('agressive')){
+                    buttonSecret.classList.add('agressive');
+                    buttonSecret.textContent = "🤬ААААААА🤬АААААА🤬";
+                }
+                click++;
+            }
+
+            const createNotification = (p, span) =>{
+                if(!notification.classList.contains('active')){
+                    notification.classList.add('active');
+                }
+                notification.querySelector('span').textContent = span;
+                notification.querySelector('p').textContent = p;
+            }
+
+            const closeNotif = () =>{
+                notification.classList.remove('active');
+            }
+
+            const createMessage = (p) =>{
+                let src = "img/avatar.jpg";
+
+                let message = document.createElement('li'),
+                    messageImg = document.createElement('img')
+                    messagediv = document.createElement('message'),
+                    messageSpan = document.createElement('span'),
+                    messageP = document.createElement('p');
+
+                messageP.innerHTML = `${p}`;
+                messageSpan.innerHTML = "Дима";
+                messagediv.appendChild(messageSpan);
+                messagediv.appendChild(messageP);
+                messagediv.classList.add('message');
+
+                messageImg.src = src;
+                message.appendChild(messageImg);
+                message.appendChild(messagediv);
+                message.classList.add('message-item')
+
+                messenger.appendChild(message);
+                a++;
+            }
+
+            const labyrinthGame = () =>{
+                if(phone.classList.contains('active')){
+                    phoneopener.classList.toggle('active');
+                    phone.classList.toggle('active');
+                }
+                if(event.target.classList.contains("lava")){
+                    window.scrollBy(0,-1000)
+                    ch1 = false;
+                    ch2 = false;
+                    ch3 = false;
+                    ch4 = false;
+                    ch = 0;
+                    createNotification("Ты упал в лаву и был возвращён назад", "Ты упал");
+                    
+                }
+                else if(event.target.classList.contains("ch1")){
+                    if(!ch1) ch++;
+                    ch1 = true;
+                    createNotification(`Собрано ключей ${ch}/4`,"Ты собрал ключ");
+                }
+                else if(event.target.classList.contains("ch2")){
+                    if(!ch2) ch++;
+                    ch2 = true;
+                    createNotification(`Собрано ключей ${ch}/4`,"Ты собрал ключ");
+                }
+                else if(event.target.classList.contains("ch3")){
+                    if(!ch3) ch++;
+                    ch3 = true;
+                    createNotification(`Собрано ключей ${ch}/4`,"Ты собрал ключ");
+                }
+                else if(event.target.classList.contains("ch4")){
+                    if(!ch4) ch++;
+                    ch4 = true;
+                    createNotification(`Собрано ключей ${ch}/4`,"Ты собрал ключ");
+                } 
+                else if(!event.target.classList.contains("end") && ch1 && ch2 && ch3 && ch4){
+                    createNotification(`Собрано ключей ${ch}/4. Ты собрал их все и можешь двигаться к выходу!`,"НА ВЫХОД!");
+                }
+                else if(event.target.classList.contains("end") && ch1 && ch2 && ch3 && ch4){
+                    createNotification(`Ты с лёгкостью(надеюсь) пробежал лабиринт и двигаешься дальше!`,"ПОБЕДА!");
+                    document.querySelector('.darker').style.display = 'block';
+                }
+                else if(event.target.classList.contains("end") && !ch1 || !ch2 || !ch3 || !ch3){
+                    createNotification(`Собрано ключей ${ch}/4, осталось ещё ${4-ch}`,"Ты собрал не все ключи!");
+                }
+
+            }
+
+            const lighter = () =>{
+                document.querySelector('.light').classList.toggle('active');
+                document.querySelector('.darker').classList.toggle('lighte');
+            }
+
+            const lampON = () =>{
+                document.querySelector('.light').classList.toggle('active');
+                document.querySelector('.darker').classList.toggle('active');
+            }
+
+            document.addEventListener("DOMContentLoaded", setTimeout(()=>{
+                if(!buttonSecret.classList.contains('active')){
+                    starting = true;
+                    writting(2000);
+                    setTimeout(() =>{createMessage('ДАРОВА!')}, 2000);
+                    newMessage();
+                    writting(5000);
+                    setTimeout(() =>{createMessage('Я тебя немножечко задержу')}, 5000);
+                    writting(8000);
+                    setTimeout(() =>{createMessage('Не хочешь по внимательнее рассмотреть этот сайт👉👈')}, 8000);
+                    writting(11000);
+                    setTimeout(() =>{createMessage('На этой странице я кое-что спрятал. Чтобы начать, тебе нужно найти это')}, 11000);
+                    
+                }
+                window.onscroll = () =>{
+                    if(getBodyScrollTop() > 750 && !startLabirinth){
+                        writting(2000);
+                        setTimeout(() =>{createMessage('Добро пожаловать в мой лабиринт!')}, 2000);
+                        newMessage();
+                        writting(5000);
+                        setTimeout(() =>{createMessage('Здесь тебе нужно собрать 4 ключа и выйти из него (вообще не сложно)')}, 5000);
+                        startLabirinth = true;
+                    }
+                    if(getBodyScrollTop() > 2500 && !startDarker){
+                        closeNotif()
+                        writting(2000);
+                        setTimeout(() =>{createMessage('Ой, что-то здесь темно >.<')}, 2000);
+                        newMessage();
+                        writting(5000);
+                        setTimeout(() =>{createMessage('Где-то тут был выключатель')}, 5000);
+                        writting(8000);
+                        setTimeout(() =>{createMessage('Давай-ка подрубим фонарик')}, 8000);
+                        startDarker = true;
+                        setTimeout(() =>{document.querySelector('.flashlight').classList.add('active')}, 11000);
+                    }
+                    if(getBodyScrollTop() > 0 && document.querySelector('.darker').classList.contains('active') && !endSite){
+                        writting(2000);
+                        setTimeout(() =>{createMessage('Похоже сайт подошёл к концу')}, 2000);
+                        newMessage();
+                        writting(5000);
+                        setTimeout(() =>{createMessage('Спасибо за то, что уделил своё время на полный просмотр одной из эксперементальных страниц')}, 5000);
+                        writting(10000);
+                        setTimeout(() =>{createMessage('Пока.')}, 10000);
+                        endSite = true;
+                        start();
+                        stop(100000);
+                    }
+                    
+                    
+                }
+                
+
+            }, 5000));
+
+            function getBodyScrollTop()
+            {
+                return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
+            }
+
+            
+        </script>
+    </body>
+</html>
