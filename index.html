@@ -16,7 +16,7 @@
 }
 
 body{
-    background-image: url(img/background.jpg);
+    background-image: url(../img/background.jpg);
     height: 100%;
     width: 100%;
     overflow-x: hidden;
@@ -61,7 +61,7 @@ header .toggle{
     width: 40px;
     height: 40px;
 
-    background: url(img/menu.png);
+    background: url(../img/menu.png);
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -72,7 +72,7 @@ header .toggle{
 }
 
 header .toggle.active{
-    background: url(img/close.png);
+    background: url(../img/close.png);
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -262,6 +262,7 @@ section .pages li a:hover{
     }
     .glass{
         width: 50%;
+        backdrop-filter: blur(15px);
     }
     section .content h2{
         top: -150px;
@@ -292,7 +293,7 @@ section .pages li a:hover{
                 <li style="--i:3"><a href="#">Steam</a></li>
             </ul>
             <ul class="pages">
-                <li style="--i:1"><a href="#">First</a></li>
+                <li style="--i:1"><a href="first.html">First</a></li>
                 <li style="--i:2"><a href="#">Second</a></li>
                 <li style="--i:3"><a href="#">Third</a></li>
             </ul>
