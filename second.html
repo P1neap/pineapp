@@ -31,12 +31,18 @@
     position: absolute; /* задаём абсолютное позиционирование, чтобы элемент не влиял на остальные элементы и его можно было бы позиционировать следом за курсором */
     z-index: 999; /* чтобы элемент был над остальными элементами */
     pointer-events: none; /* чтобы сквозь элемент можно было взаимодействовать с элементами, находящимися под ним */
-    transition: width 0.64s, height 0.64s, border-radius 0.64s, opacity 0.3s, top 75ms, left 75ms;
+    transition: width 0.64s, height 0.64s, border-radius 0.64s, opacity 0.3s;
 }
 
 *:active .follow-cursor{
     width: 12px;
     height: 12px;
+}
+
+*:active .follow-cursor.follow-cursor_text{
+    width: 3px;
+    height: 36px;
+    border-radius: 10%;
 }
 
 .follow-cursor_text{
