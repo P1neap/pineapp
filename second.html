@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/style/style2.css">
         <title>Document</title>
         <style>
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
@@ -29,7 +28,7 @@
     border-radius: 50%;
     transform: translateY(-50%) translateX(-50%); /* центрируем кружок */
     position: absolute; /* задаём абсолютное позиционирование, чтобы элемент не влиял на остальные элементы и его можно было бы позиционировать следом за курсором */
-    z-index: 999; /* чтобы элемент был над остальными элементами */
+    z-index: 99; /* чтобы элемент был над остальными элементами */
     pointer-events: none; /* чтобы сквозь элемент можно было взаимодействовать с элементами, находящимися под ним */
     transition: width 0.64s, height 0.64s, border-radius 0.64s, opacity 0.3s;
 }
@@ -59,16 +58,19 @@
 .follow-cursor_active{
     width: 48px;
     height: 48px;
-    opacity: 0;
+    opacity: .3;
     transition: 0.1s;
+    background: radial-gradient(circle, rgba(237,241,244,1) 0%, rgba(255,255,255,0) 75%);
 }
 
 button{
+    position: relative;
     transition: 0.3s;
 }
 
 button.active{
     background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
     transition: 0.3s;
 }
 
@@ -103,6 +105,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #edf1f4;
 }
 
 header .logo{
@@ -330,7 +333,8 @@ section{
             let range = document.querySelector('.range');
 
             const removeActive = (target) =>{
-                target.forEach(enement => enement.classList.remove('active'))
+                target.forEach(enement =>{enement.style.transform = `translateX(0) translateY(0)`; enement.classList.remove('active')} )
+                
             }
 
             const followCursor = () => { // объявляем функцию followCursor
@@ -341,12 +345,16 @@ section{
                 if (!target) return
 
                 if (target.closest('button')) { // если курсор наведён на ссылку
-                  el.classList.add('follow-cursor_active') // элементу добавляем активный класс
-                  target.classList.add('active');
+                    el.classList.add('follow-cursor_active') // элементу добавляем активный класс
+                    target.classList.add('active');// 1080 1140 1202
+                    target.style.transform = `translateX(${-((target.getBoundingClientRect().right - event.clientX) - target.clientWidth / 2)/2}px) 
+                                            translateY(${-((target.getBoundingClientRect().bottom - event.clientY) - target.clientHeight / 2)}px)`
                 } 
                 else if (target.closest('a')) { // если курсор наведён на ссылку
-                  el.classList.add('follow-cursor_active') // элементу добавляем активный класс
-                  target.classList.add('active');
+                    el.classList.add('follow-cursor_active') // элементу добавляем активный класс
+                    target.classList.add('active');
+                    target.style.transform = `translateX(${-((target.getBoundingClientRect().right - event.clientX) - target.clientWidth / 2)/2}px) 
+                                            translateY(${-((target.getBoundingClientRect().bottom - event.clientY) - target.clientHeight / 2)}px)`
                 } 
                 else if(target.closest('span') || target.closest('p')){
                     el.classList.add('follow-cursor_text')
@@ -355,11 +363,11 @@ section{
                     el.classList.add('follow-cursor_range')
                 }
                 else { // иначе
-                  el.classList.remove('follow-cursor_active')
-                  el.classList.remove('follow-cursor_text') // удаляем активный класс
-                  el.classList.remove('follow-cursor_range')
-                  removeActive(a)
-                  removeActive(button)
+                    el.classList.remove('follow-cursor_active')
+                    el.classList.remove('follow-cursor_text') // удаляем активный класс
+                    el.classList.remove('follow-cursor_range')
+                    removeActive(a)
+                    removeActive(button)
                 }
             
                 el.style.left = e.pageX + 'px' // задаём элементу позиционирование слева
